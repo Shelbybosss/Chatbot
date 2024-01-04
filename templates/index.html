@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot Web</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>ChatBot</h1>
+        </nav>
+    </header>
+
+
+    <div id="main-container">
+        <div id="chat-container" class="card">
+            <h2>ChatBot</h2>
+            <div>
+                <p>Hi! I'm here to answer your questions.</p>
+                <p>Type 'quit' to exit.</p>
+            </div>
+            <form action="/get_response" method="post">
+                <label for="user_input">Your message:</label>
+                <div class="chat-input">
+                    <input type="text" id="user_input" name="user_input" required>
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+            {% if response %}
+                <div class="chat-output">
+                    <p>ChatBot: {{ response }}</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div id="instructions-container" class="card">
+            <h2>Instructions</h2>
+            <p>
+                <ol>
+                    <li>Enter your message in the chat input field.</li>
+                    <li>Press 'Send' to interact with the ChatBot.</li>
+                    <li>View the ChatBot's response in the chat output.</li>
+                    <li>Type 'quit' to exit.</li>
+                </ol>
+            </p>
+            <div class="legend">
+                <p>Legend:</p>
+                <ul>
+                    <li>1: Get a Joke</li>
+                    <li>2: Get News</li>
+                    <li>3: Get a Chuck Norris Fact</li>
+                    <li>4: Get a General Knowledge Question</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
